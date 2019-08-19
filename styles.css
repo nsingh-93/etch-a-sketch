@@ -1,1 +1,19 @@
-/* Styles file for etch a sketch
+
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container {
+    display: grid;
+    width: 950px;
+    height: 625px;
+    border: solid 5px black;
+    text-align: center;
+}
+
+.grid-item {
+    padding: 0px;
+    margin: 0px;
+}
