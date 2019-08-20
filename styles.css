@@ -7,8 +7,8 @@ body {
 
 .container {
     display: grid;
-    width: 950px;
-    height: 625px;
+    width: 80vw;
+    height: 90vh;
     border: solid 5px black;
     text-align: center;
 }
