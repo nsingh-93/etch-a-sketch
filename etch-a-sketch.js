@@ -23,9 +23,12 @@ function addGrid(container, cells) {
             div.style.gridColumnEnd = col + 1;
             div.style.gridRowStart = row;
             div.style.gridRowEnd = row + 1;
-            div.style.border = 'solid 1px #EEE';
+            div.style.border = 'none';
             div.classList.add('grid-item');
             container.appendChild(div);
+            div.addEventListener('mouseenter', () => {
+                fillGridSquare(div, mode);
+            });
         }
     }
 }
@@ -49,6 +52,14 @@ function fillGridSquare (gridItem, colorMode) {
             color = '#000';
             break;
     }
+    
+    gridItem.style.backgroundColor = color;
+}
 
-    gridItem.style.cssText = 'background-color: ' + color + ';';
+function resetBoard() {
+    gridItems = Array.from(document.querySelectorAll('.grid-item'));
+
+    gridItems.forEach((item) => {
+        item.style.backgroundColor = '#FFF';
+    })
 }
