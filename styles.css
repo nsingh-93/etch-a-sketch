@@ -4,6 +4,7 @@ body {
     grid-template-columns: 25% 50% 25%;
     text-align: center;
     align-items: center;
+    background-color: cornflowerblue;
 }
 
 .play-area {
@@ -18,6 +19,7 @@ body {
     height: 95vh;
     border: solid 5px black;
     text-align: center;
+    background-color: #FFF !important;
 }
 
 .grid-item {
@@ -25,11 +27,34 @@ body {
     margin: 0px;
 }
 
-#reset-board {
-    background-color: #FF1133;
+.buttons-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-buttons {
     border-radius: 5px;
     border: none;
     padding: 10px;
     margin: 5px;
     font-size: 20px;
+}
+
+#reset-board {
+    background-color: #FF1133;
+}
+
+#normal-mode {
+    background-color: #000;
+    color: #FFF;
+}
+
+#rgb-mode {
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+}
+
+#gray-mode {
+    background-image: linear-gradient(to right, #FFF, #DDD, #BBB, #AAA, #888, #666, #444);
 }

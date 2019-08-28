@@ -48,6 +48,12 @@ function fillGridSquare (gridItem, colorMode) {
         case 'normal':
             color = '#000';
             break;
+        case 'rgb':
+            color = random_rgba();
+            break;
+        case 'gray':
+            
+            break;
         default:
             color = '#000';
             break;
@@ -62,4 +68,18 @@ function resetBoard() {
     gridItems.forEach((item) => {
         item.style.backgroundColor = '#FFF';
     })
+
+    var newSideLength = window.prompt('Enter the number of boxes per side', Math.sqrt(gridItems.length));
+
+    addGrid(container, Number(newSideLength));
+}
+
+function setMode(modeOption) {
+    mode = modeOption;
+}
+
+function random_rgba() {
+    // Taken from here: https://bit.ly/2PfzLIG and adjusted to not use rgb(255, 255, 255) or alpha value
+    var o = Math.round, r = Math.random, s = 254;    
+    return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
 }

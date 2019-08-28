@@ -4,11 +4,15 @@
         <meta charset="UTF-8">
         <title>Etch-A-Sketch</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="etchasketch.png">
     </head>
     <script src='etch-a-sketch.js'></script>
     <body>
         <div class='buttons-section'>
-            <button id='reset-board' onclick="resetBoard()">RESET</button>
+            <button id='reset-board' class='color-buttons' onclick="resetBoard()">RESET</button>
+            <button id='normal-mode' class='color-buttons' onclick="setMode('normal')">NORMAL MODE</button>
+            <button id='rgb-mode' class='color-buttons' onclick="setMode('rgb')">RGB MODE</button>
+            <button id='gray-mode' class='color-buttons' onclick="setMode('gray')">GRAYSCALE MODE</button>
         </div>
         <div class='play-area'>
             <div class="container">
