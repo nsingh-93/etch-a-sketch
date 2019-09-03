@@ -24,6 +24,7 @@ function addGrid(container, cells) {
             div.style.gridRowStart = row;
             div.style.gridRowEnd = row + 1;
             div.style.border = 'none';
+            div.style.opacity = 1.0;
             div.classList.add('grid-item');
             container.appendChild(div);
             div.addEventListener('mouseenter', () => {
@@ -41,7 +42,7 @@ function removeElementsByClass(className) {
     }
 }
 
-function fillGridSquare (gridItem, colorMode) {
+function fillGridSquare(gridItem, colorMode) {
     let color = '';
 
     switch (colorMode) {
@@ -52,14 +53,19 @@ function fillGridSquare (gridItem, colorMode) {
             color = random_rgba();
             break;
         case 'gray':
-            
+            color = 'rgb(0,0,0)';
+            gridItem.style.opacity -= 0.1;
             break;
         default:
-            color = '#000';
+            color = '#FFF';
             break;
     }
     
     gridItem.style.backgroundColor = color;
+
+    if (colorMode == 'gray') {        
+        gridItem.style.opacity = opacity;      
+    }
 }
 
 function resetBoard() {
@@ -67,8 +73,10 @@ function resetBoard() {
 
     gridItems.forEach((item) => {
         item.style.backgroundColor = '#FFF';
-    })
+    })    
+}
 
+function changeBoardSize() {
     var newSideLength = window.prompt('Enter the number of boxes per side', Math.sqrt(gridItems.length));
 
     addGrid(container, Number(newSideLength));
