@@ -24,6 +24,7 @@ function addGrid(container, cells) {
             div.style.gridRowStart = row;
             div.style.gridRowEnd = row + 1;
             div.style.border = 'none';
+            div.style.backgroundColor = '#FFF';
             div.style.opacity = 1.0;
             div.classList.add('grid-item');
             container.appendChild(div);
@@ -48,13 +49,18 @@ function fillGridSquare(gridItem, colorMode) {
     switch (colorMode) {
         case 'normal':
             color = '#000';
+            gridItem.style.opacity = 1.0;
             break;
         case 'rgb':
-            color = random_rgba();
+            color = randomRGB();
+            gridItem.style.opacity = 1.0;
             break;
         case 'gray':
+            if (gridItem.style.backgroundColor != 'rgb(0, 0, 0)') {
+                gridItem.style.opacity = 0.0;
+            }
             color = 'rgb(0,0,0)';
-            gridItem.style.opacity -= 0.1;
+            gridItem.style.opacity = Number(gridItem.style.opacity) + 0.1;
             break;
         default:
             color = '#FFF';
@@ -62,10 +68,6 @@ function fillGridSquare(gridItem, colorMode) {
     }
     
     gridItem.style.backgroundColor = color;
-
-    if (colorMode == 'gray') {        
-        gridItem.style.opacity = opacity;      
-    }
 }
 
 function resetBoard() {
@@ -73,6 +75,7 @@ function resetBoard() {
 
     gridItems.forEach((item) => {
         item.style.backgroundColor = '#FFF';
+        item.style.opacity = 1.0;
     })    
 }
 
@@ -86,7 +89,7 @@ function setMode(modeOption) {
     mode = modeOption;
 }
 
-function random_rgba() {
+function randomRGB() {
     // Taken from here: https://bit.ly/2PfzLIG and adjusted to not use rgb(255, 255, 255) or alpha value
     var o = Math.round, r = Math.random, s = 254;    
     return 'rgb(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
